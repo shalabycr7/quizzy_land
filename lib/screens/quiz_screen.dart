@@ -18,66 +18,62 @@ class _QuizScreenState extends State<QuizScreen> {
     return Scaffold(
       bottomNavigationBar: Container(
         height: 100,
-        padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-        decoration: BoxDecoration(
+        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+        decoration: const BoxDecoration(
           color: Color.fromARGB(255, 245, 240, 252),
         ),
         child: Column(
           children: [
-            Divider(
+            const Divider(
               thickness: 1,
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Container(
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0.0,
+                    backgroundColor: const Color.fromARGB(255, 120, 30, 255),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10.0, vertical: 19),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Icon(
+                        Icons.arrow_back_ios_new_sharp,
+                        size: 15,
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0.0,
-                      backgroundColor: Color.fromARGB(255, 120, 30, 255),
+                      backgroundColor: const Color.fromARGB(255, 120, 30, 255),
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 19),
+                          horizontal: 10.0, vertical: 17),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                     ),
                     onPressed: () {},
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Icon(
-                          Icons.arrow_back_ios_new_sharp,
-                          size: 15,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Expanded(
-                  child: Container(
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        elevation: 0.0,
-                        backgroundColor: Color.fromARGB(255, 120, 30, 255),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10.0, vertical: 17),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                      ),
-                      onPressed: () {},
-                      child: Text(
-                        'Complete',
-                        style: GoogleFonts.quicksand(
-                          textStyle: const TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w500),
-                        ),
+                    child: Text(
+                      'Complete',
+                      style: GoogleFonts.quicksand(
+                        textStyle: const TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.w500),
                       ),
                     ),
                   ),
@@ -105,7 +101,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CountDown(),
+                      const CountDown(),
                       Text(
                         'Q.05',
                         style: GoogleFonts.quicksand(
@@ -141,7 +137,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Text(
@@ -153,13 +149,13 @@ class _QuizScreenState extends State<QuizScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
-                    ChoiceButton(title: 'A. Shapen'),
-                    ChoiceButton(title: 'B. Size'),
-                    ChoiceButton(title: 'C. Accelration'),
-                    ChoiceButton(title: 'D. Position'),
+                    const ChoiceButton(title: 'A. Shapen'),
+                    const ChoiceButton(title: 'B. Size'),
+                    const ChoiceButton(title: 'C. Accelration'),
+                    const ChoiceButton(title: 'D. Position'),
                   ],
                 ),
               ),
