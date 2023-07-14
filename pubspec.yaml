@@ -36,6 +36,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   google_fonts: ^4.0.4
+  font_awesome_flutter: ^10.4.0
 
 dev_dependencies:
   flutter_test:
@@ -60,9 +61,14 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - lib/assest/images/Love Heart Cloud Vector Hd PNG Images, Flask Love Heart Wedding Blue Icon On Abstract Cloud Backgrou, Heart Icons, Cloud Icons, Love Icons PNG Image For Free Download.jpg
+    - lib/assest/images/WhatsApp Image 2023-07-14 at 6.01.46 PM (1).jpeg
+    - lib/assest/images/Premium Vector _ Open book and icons of mathematics.jpg
+    - lib/assest/images/ff/Free Vector _ Blue ripped note collection.jpg
+    - lib/assest/images/Stitch_Stickers_for_Sale-removebg-preview (1).png 
+    - lib/assest/images/logo1.png
+  # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
