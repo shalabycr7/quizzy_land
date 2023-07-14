@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:quizzy_land/global/choice_button.dart';
+import 'package:quizzy_land/global/global_data.dart';
 import 'package:quizzy_land/global/gradient_decoration.dart';
+import 'package:quizzy_land/global/questions_index_listener.dart';
 import 'package:quizzy_land/shared/countdown_timer.dart';
 
 class QuizScreen extends StatefulWidget {
@@ -15,6 +18,8 @@ class _QuizScreenState extends State<QuizScreen> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    var variableValue = Provider.of<MyModel>(context).variableValue;
+
     return Scaffold(
       bottomNavigationBar: Container(
         height: 100,
@@ -68,7 +73,9 @@ class _QuizScreenState extends State<QuizScreen> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      print(variableValue);
+                    },
                     child: Text(
                       'Complete',
                       style: GoogleFonts.quicksand(
@@ -103,7 +110,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     children: [
                       const CountDown(),
                       Text(
-                        'Q.05',
+                        'Q.${variableValue + 1}',
                         style: GoogleFonts.quicksand(
                           textStyle: const TextStyle(
                             fontSize: 16,
@@ -141,7 +148,7 @@ class _QuizScreenState extends State<QuizScreen> {
                       height: 20,
                     ),
                     Text(
-                      'When an object is in motion, it is .... must change?',
+                      biologyTest[variableValue]["question"],
                       style: GoogleFonts.quicksand(
                         textStyle: const TextStyle(
                           fontSize: 16,
@@ -152,10 +159,18 @@ class _QuizScreenState extends State<QuizScreen> {
                     const SizedBox(
                       height: 20,
                     ),
-                    const ChoiceButton(title: 'A. Shapen'),
-                    const ChoiceButton(title: 'B. Size'),
-                    const ChoiceButton(title: 'C. Accelration'),
-                    const ChoiceButton(title: 'D. Position'),
+                    ChoiceButton(
+                      title: biologyTest[variableValue]["answers"][0]['ans'],
+                    ),
+                    ChoiceButton(
+                      title: biologyTest[variableValue]["answers"][1]['ans'],
+                    ),
+                    ChoiceButton(
+                      title: biologyTest[variableValue]["answers"][2]['ans'],
+                    ),
+                    ChoiceButton(
+                      title: biologyTest[variableValue]["answers"][3]['ans'],
+                    ),
                   ],
                 ),
               ),

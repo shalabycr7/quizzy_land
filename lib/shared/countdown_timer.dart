@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
+import 'package:quizzy_land/screens/score_screen.dart';
 
 class CountDown extends StatelessWidget {
   const CountDown({Key? key}) : super(key: key);
@@ -34,12 +35,16 @@ class CountDown extends StatelessWidget {
             ),
             endTime: DateTime.now().add(
               const Duration(
-                minutes: 1,
-                seconds: 34,
+                minutes: 0,
+                seconds: 20,
               ),
             ),
             onEnd: () {
               print("Timer finished");
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ScoreScreen()),
+              );
             },
           ),
         ],
