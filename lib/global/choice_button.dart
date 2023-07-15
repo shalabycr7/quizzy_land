@@ -25,7 +25,7 @@ class _ChoiceButtonState extends State<ChoiceButton> {
   void _handlePress() {
     setState(() {
       if (questionIndex == biologyTest.length - 1) {
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const ReviewScreen()),
         );
