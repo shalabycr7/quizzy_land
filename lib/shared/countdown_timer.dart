@@ -35,15 +35,14 @@ class CountDown extends StatelessWidget {
             ),
             endTime: DateTime.now().add(
               const Duration(
-                minutes: 1,
+                minutes: 60,
                 seconds: 15,
               ),
             ),
             onEnd: () {
-              print("Timer finished");
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ScoreScreen()),
+                MaterialPageRoute(builder: (context) => const ScoreScreen()),
               );
             },
           ),

@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -7,12 +5,12 @@ import 'package:quizzy_land/global/global_data.dart';
 import 'package:quizzy_land/global/questions_index_listener.dart';
 import 'package:quizzy_land/screens/score_screen.dart';
 
-int ll = 0;
+int questionIndex = 0;
 
 class ChoiceButton extends StatefulWidget {
   final String title;
 
-  ChoiceButton({
+  const ChoiceButton({
     Key? key,
     required this.title,
   }) : super(key: key);
@@ -26,45 +24,48 @@ class _ChoiceButtonState extends State<ChoiceButton> {
 
   void _handlePress() {
     setState(() {
-      if (ll == biologyTest.length - 1) {
+      if (questionIndex == biologyTest.length - 1) {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ScoreScreen()),
+          MaterialPageRoute(builder: (context) => const ScoreScreen()),
         );
       } else {
-        ll++;
+        questionIndex++;
         Provider.of<MyModel>(context, listen: false).setVariableValue();
-        isPressed = true;
-        Timer(Duration(milliseconds: 200), () {
-          setState(() {
-            isPressed = false;
-          });
-        });
       }
     });
   }
 
+  MaterialStateProperty<Color> getColor(Color color, Color colorPressed) {
+    getColor(Set<MaterialState> states) {
+      if (states.contains(MaterialState.pressed)) {
+        return colorPressed;
+      } else {
+        return color;
+      }
+    }
+
+    return MaterialStateProperty.resolveWith(getColor);
+  }
+
   @override
   Widget build(BuildContext context) {
-    final color =
-        isPressed ? const Color.fromARGB(255, 120, 30, 255) : Colors.white;
-    final textColor = isPressed ? Colors.white : Colors.black;
-
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.symmetric(vertical: 5),
       child: ElevatedButton(
         onPressed: _handlePress,
-        style: ElevatedButton.styleFrom(
-          foregroundColor: textColor,
-          backgroundColor: color,
-          elevation: 0.0,
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 25),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-            side: const BorderSide(color: Colors.grey, width: 0.5),
-          ),
-        ),
+        style: ButtonStyle(
+            elevation: MaterialStateProperty.all(0),
+            padding: MaterialStateProperty.all(
+                const EdgeInsets.symmetric(vertical: 25, horizontal: 15)),
+            backgroundColor:
+                getColor(Colors.white, const Color.fromARGB(255, 120, 30, 255)),
+            foregroundColor: getColor(Colors.black, Colors.white),
+            shape: MaterialStateProperty.all(RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              side: const BorderSide(color: Colors.grey, width: 0.5),
+            ))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
