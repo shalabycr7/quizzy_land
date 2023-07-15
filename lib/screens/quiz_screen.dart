@@ -84,7 +84,7 @@ class _QuizScreenState extends State<QuizScreen> {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const ReviewScreen(),

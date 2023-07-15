@@ -1,155 +1,129 @@
 import 'package:flutter/material.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quizzy_land/global/gradient_decoration.dart';
 import 'package:quizzy_land/screens/category_screen.dart';
+import 'package:quizzy_land/shared/round_button_decoration.dart';
 
-final _formKey = GlobalKey<FormState>();
 final userNameTextCont = TextEditingController();
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
+
     return Scaffold(
-      body: Stack(children: [
-        Container(
-          decoration: blueGradient,
-        ),
-        SizedBox(
-          child: Container(
-            height: MediaQuery.of(context).size.height * 0.5,
-          ),
-        ),
-        Positioned(
-          child: Image.asset(
-            "assets/images/logo.png",
-            width: 400,
-            height: 400,
-          ),
-        ),
-        Positioned(
-          left: screenSize.width * 0.17,
-          right: 0,
-          top: screenSize.height * 0.45,
-          child: Text(
-            "Want To Start?",
-            style: GoogleFonts.quicksand(
-              fontSize: 30.0,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 3.0,
-            ),
-          ),
-        ),
-        Positioned(
-          bottom: 0,
-          child: Container(
-            width: screenSize.width,
-            height: screenSize.height * 0.4,
-            decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 245, 240, 252),
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(25),
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Form(
-                key: _formKey,
-                child: SingleChildScrollView(
+      body: DecoratedBox(
+        decoration: blueGradient,
+        child: SafeArea(
+          child: Stack(
+            alignment: AlignmentDirectional.bottomCenter,
+            children: [
+              Align(
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    left: 20,
+                    right: 20,
+                    top: size.height * 1 / 40,
+                  ),
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      SizedBox(
-                        height: screenSize.height * 0.03,
-                      ),
-                      Text(
-                        'Login',
-                        style: GoogleFonts.quicksand(
-                          textStyle: const TextStyle(
-                            fontSize: 35.0,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 120, 30, 255),
-                            letterSpacing: 3.0,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: screenSize.height * 0.03,
-                      ),
-                      TextFormField(
-                        controller: userNameTextCont,
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          contentPadding: const EdgeInsets.symmetric(
-                            vertical: 16.0,
-                            horizontal: 20.0,
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                            borderSide: BorderSide.none,
-                          ),
-                          hintText: 'Username',
-                          prefixIcon: const Icon(Icons.person),
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please enter your username';
-                          } else if (value.length < 9) {
-                            return 'Username must be at least 9 characters long';
-                          } else if (!RegExp(r'^[A-Z][a-zA-Z0-9]*$')
-                              .hasMatch(value)) {
-                            return 'Username must start with an uppercase letter and contain only letters and numbers';
-                          }
-                          return null;
-                        },
-                      ),
-                      SizedBox(
-                        height: screenSize.height * 0.03,
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const CategoryScreen(),
-                              ),
-                            );
-                          }
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor:
-                              const Color.fromARGB(255, 120, 30, 255),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          fixedSize: const Size(200.0, 50.0),
-                        ),
-                        child: Text(
-                          'Login',
-                          style: GoogleFonts.quicksand(
-                            fontSize: 20.0,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: screenSize.height * 0.03,
+                      Image.asset(
+                        "assets/images/logo.png",
+                        height: size.height * 0.5,
+                        width: size.height * 0.5,
                       ),
                     ],
                   ),
                 ),
               ),
-            ),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 30,
+                  vertical: 20,
+                ),
+                height: size.height * 1 / 3,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(20),
+                  ),
+                ),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Login",
+                        style: GoogleFonts.quicksand(
+                            fontSize: 40.0, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 20),
+                      TextFormField(
+                        controller: userNameTextCont,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Username can not be empty';
+                          } else if (value.length < 9) {
+                            return "Username must be more than 9 chracters";
+                          } else if (!value[0].contains(RegExp(r'[A-Z]'))) {
+                            return "First character in username must be uppercase ";
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                          prefixIcon: const Icon(Icons.person),
+                          hintText: "Username",
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                      ),
+                      Spacer(),
+                      SizedBox(
+                        width: size.width / 2 - 60,
+                        height: 45,
+                        child: ElevatedButton(
+                          style: roundButtonDecor(Color.fromARGB(255, 120, 30, 255)),
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const CategoryScreen(),
+                                ),
+                              );
+                            }
+                          },
+                          child: Text(
+                            "Login",
+                            style: GoogleFonts.quicksand(
+                              fontSize: 20.0,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
-      ]),
+      ),
     );
   }
 }
