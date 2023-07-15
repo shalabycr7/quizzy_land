@@ -24,7 +24,7 @@ class LoginScreen extends StatelessWidget {
         ),
         Positioned(
           child: Image.asset(
-            "assets/images/logo1.png",
+            "assets/images/logo.png",
             width: 400,
             height: 400,
           ),
@@ -48,8 +48,8 @@ class LoginScreen extends StatelessWidget {
           child: Container(
             width: screenSize.width,
             height: screenSize.height * 0.4,
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 245, 240, 252),
+            decoration: const BoxDecoration(
+              color: Color.fromARGB(255, 245, 240, 252),
               borderRadius: BorderRadius.vertical(
                 top: Radius.circular(25),
               ),
@@ -68,7 +68,7 @@ class LoginScreen extends StatelessWidget {
                       Text(
                         'Login',
                         style: GoogleFonts.quicksand(
-                          textStyle: TextStyle(
+                          textStyle: const TextStyle(
                             fontSize: 35.0,
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 120, 30, 255),
@@ -115,25 +115,25 @@ class LoginScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => QuizScreen(),
+                                builder: (context) => const QuizScreen(),
                               ),
                             );
                           }
                         },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          backgroundColor: const Color.fromARGB(255, 120, 30, 255),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          fixedSize: const Size(200.0, 50.0),
+                        ),
                         child: Text(
                           'Login',
                           style: GoogleFonts.quicksand(
                             fontSize: 20.0,
                             color: Colors.white,
                           ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: Color.fromARGB(255, 120, 30, 255),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          fixedSize: const Size(200.0, 50.0),
                         ),
                       ),
                       SizedBox(
