@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quizzy_land/global/questions_index_listener.dart';
-import 'package:quizzy_land/screens/category_screen.dart';
-import 'package:quizzy_land/screens/reviews_screen.dart';
+import 'package:quizzy_land/screens/login_screen.dart';
 
 void main() {
   runApp(
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: const ReviewScreen(),
+      home: const LoginScreen(),
     );
   }
 }

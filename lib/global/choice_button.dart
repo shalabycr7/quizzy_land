@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:quizzy_land/global/global_data.dart';
 import 'package:quizzy_land/global/questions_index_listener.dart';
-import 'package:quizzy_land/screens/score_screen.dart';
+import 'package:quizzy_land/screens/reviews_screen.dart';
 
 int questionIndex = 0;
 
@@ -27,7 +27,7 @@ class _ChoiceButtonState extends State<ChoiceButton> {
       if (questionIndex == biologyTest.length - 1) {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const ScoreScreen()),
+          MaterialPageRoute(builder: (context) => const ReviewScreen()),
         );
       } else {
         questionIndex++;

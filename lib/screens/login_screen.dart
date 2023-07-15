@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quizzy_land/global/gradient_decoration.dart';
-import 'package:quizzy_land/screens/quiz_screen.dart';
+import 'package:quizzy_land/screens/category_screen.dart';
 
 final _formKey = GlobalKey<FormState>();
 
@@ -115,7 +115,7 @@ class LoginScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const QuizScreen(),
+                                builder: (context) => const CategoryScreen(),
                               ),
                             );
                           }

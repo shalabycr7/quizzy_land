@@ -5,6 +5,7 @@ import 'package:quizzy_land/global/choice_button.dart';
 import 'package:quizzy_land/global/global_data.dart';
 import 'package:quizzy_land/global/gradient_decoration.dart';
 import 'package:quizzy_land/global/questions_index_listener.dart';
+import 'package:quizzy_land/screens/reviews_screen.dart';
 import 'package:quizzy_land/shared/countdown_timer.dart';
 
 class QuizScreen extends StatefulWidget {
@@ -74,7 +75,12 @@ class _QuizScreenState extends State<QuizScreen> {
                       ),
                     ),
                     onPressed: () {
-                      print(variableValue);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ReviewScreen(),
+                        ),
+                      );
                     },
                     child: Text(
                       'Complete',
