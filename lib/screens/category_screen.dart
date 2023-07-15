@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quizzy_land/global/gradient_decoration.dart';
+import 'package:quizzy_land/screens/login_screen.dart';
 import 'package:quizzy_land/shared/card_category.dart';
 
 class CategoryScreen extends StatelessWidget {
@@ -16,25 +17,51 @@ class CategoryScreen extends StatelessWidget {
         ),
         Positioned(
           left: 20,
-          right: 20,
-          top: 90,
-          child: Row(
+          top: 75,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Please Select A Category",
-                style: GoogleFonts.quicksand(
-                    fontSize: 18.0,
+              Row(
+                children: [
+                  const Icon(
+                    Icons.waving_hand_outlined,
                     color: Colors.white,
-                    fontWeight: FontWeight.w700),
+                    size: 15,
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    'Hello ${userNameTextCont.text}',
+                    style: GoogleFonts.quicksand(
+                      fontSize: 18.0,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(
-                width: 10,
+                height: 20,
               ),
-              const Icon(
-                Icons.arrow_circle_right_outlined,
-                color: Colors.white,
-                size: 22,
-              )
+              Row(
+                children: [
+                  Text(
+                    "Please Select A Category",
+                    style: GoogleFonts.quicksand(
+                        fontSize: 18.0,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600),
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  const Icon(
+                    Icons.arrow_circle_right_outlined,
+                    color: Colors.white,
+                    size: 22,
+                  )
+                ],
+              ),
             ],
           ),
         ),

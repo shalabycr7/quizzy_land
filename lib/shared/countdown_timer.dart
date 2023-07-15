@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
-import 'package:quizzy_land/screens/score_screen.dart';
+import 'package:quizzy_land/screens/reviews_screen.dart';
 
 class CountDown extends StatelessWidget {
   const CountDown({Key? key}) : super(key: key);
@@ -40,9 +40,9 @@ class CountDown extends StatelessWidget {
               ),
             ),
             onEnd: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const ScoreScreen()),
+                MaterialPageRoute(builder: (context) => const ReviewScreen()),
               );
             },
           ),

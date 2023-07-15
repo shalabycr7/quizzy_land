@@ -5,6 +5,7 @@ import 'package:quizzy_land/global/gradient_decoration.dart';
 import 'package:quizzy_land/screens/category_screen.dart';
 
 final _formKey = GlobalKey<FormState>();
+final userNameTextCont = TextEditingController();
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -80,6 +81,7 @@ class LoginScreen extends StatelessWidget {
                         height: screenSize.height * 0.03,
                       ),
                       TextFormField(
+                        controller: userNameTextCont,
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
@@ -112,7 +114,7 @@ class LoginScreen extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            Navigator.push(
+                            Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => const CategoryScreen(),
@@ -122,7 +124,8 @@ class LoginScreen extends StatelessWidget {
                         },
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.white,
-                          backgroundColor: const Color.fromARGB(255, 120, 30, 255),
+                          backgroundColor:
+                              const Color.fromARGB(255, 120, 30, 255),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0),
                           ),
