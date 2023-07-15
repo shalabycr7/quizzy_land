@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quizzy_land/global/questions_index_listener.dart';
+import 'package:quizzy_land/screens/category_screen.dart';
+import 'package:quizzy_land/screens/login_screen.dart';
 import 'package:quizzy_land/screens/quiz_screen.dart';
 
 void main() {
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: const QuizScreen(),
+      home: const CategoryScreen(),
     );
   }
 }
