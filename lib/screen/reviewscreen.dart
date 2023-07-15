@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
-class ReviewScreen extends StatelessWidget {
+class ReviewScreen extends StatefulWidget {
   const ReviewScreen({super.key});
 
+  @override
+  State<ReviewScreen> createState() => _ReviewScreenState();
+}
+
+class _ReviewScreenState extends State<ReviewScreen> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return SafeArea(
         child: Scaffold(
             body: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
@@ -21,7 +27,7 @@ class ReviewScreen extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.all(50),
                       child: Text(
                         '2 out of 5 are correct',
@@ -31,7 +37,7 @@ class ReviewScreen extends StatelessWidget {
                     Expanded(
                         child: Container(
                       height: MediaQuery.of(context).size.height * 4 / 5,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                           color: Color.fromRGBO(246, 241, 248, 1),
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(60),
@@ -40,27 +46,35 @@ class ReviewScreen extends StatelessWidget {
                       child: Column(children: <Widget>[
                         Padding(
                           padding: EdgeInsets.all(30),
-                          child: Icon(
-                            Icons.lightbulb_outline_rounded,
-                            size: 150,
-                            color: Color.fromARGB(255, 112, 112, 212),
+                          child: CircularPercentIndicator(
+                            radius: 90.0,
+                            lineWidth: 15.0,
+                            percent: 0.75,
+                            center: Text(
+                              "75.0%",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.0,
+                              ),
+                            ),
+                            progressColor: Color.fromARGB(255, 112, 112, 212),
                           ),
                         ),
-                        Text(
+                        const Text(
                           'Congratulations',
                           style: TextStyle(
                               color: Color.fromARGB(255, 112, 112, 212),
                               fontSize: 18,
                               fontWeight: FontWeight.bold),
                         ),
-                        Text(
+                        const Text(
                           'You have got 195.56 Points',
                           style: TextStyle(
                               color: Color.fromARGB(255, 112, 112, 212),
                               fontSize: 10),
                         ),
                         const SizedBox(height: 20),
-                        Text(
+                        const Text(
                           'Tap below question numbers to view correct answers',
                           style: TextStyle(
                               color: Color.fromARGB(255, 0, 0, 0),
@@ -203,7 +217,7 @@ class ReviewScreen extends StatelessWidget {
                                     )),
                               ),
                             ]),
-                        Spacer(),
+                        const Spacer(),
                         Padding(
                             padding: EdgeInsets.all(
                                 MediaQuery.of(context).size.width * .04),
@@ -228,8 +242,8 @@ class ReviewScreen extends StatelessWidget {
                                                       .12)),
                                           backgroundColor:
                                               MaterialStateProperty.all(
-                                                  Color.fromARGB(
-                                                      255, 78, 83, 82)),
+                                                  Color.fromRGBO(
+                                                      78, 83, 82, 1)),
                                         ),
                                         onPressed: () {},
                                         child: const Text(
@@ -257,7 +271,8 @@ class ReviewScreen extends StatelessWidget {
                                                       .12)),
                                           backgroundColor:
                                               MaterialStateProperty.all(
-                                            Color.fromARGB(255, 112, 112, 212),
+                                            const Color.fromARGB(
+                                                255, 112, 112, 212),
                                           ),
                                         ),
                                         onPressed: () {},
