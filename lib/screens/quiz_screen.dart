@@ -201,7 +201,7 @@ class _QuizScreenState extends State<QuizScreen> {
                                       ["score"] as int;
 
                               if (index == widget.questionsList.length - 1) {
-                                Navigator.push(
+                                Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => ReviewScreen(
