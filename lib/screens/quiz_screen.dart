@@ -58,8 +58,9 @@ class _QuizScreenState extends State<QuizScreen> {
                       ),
                     ),
                     onPressed: () async {
-                      bool shouldNavigateBack =
-                          await showBackAlertDialog(context);
+                      bool shouldNavigateBack = await showBackAlertDialog(
+                          context,
+                          'Do you want to go back to the previous screen?');
                       if (shouldNavigateBack) {
                         Navigator.of(context).pop();
                       }
@@ -89,14 +90,18 @@ class _QuizScreenState extends State<QuizScreen> {
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                       ),
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                ReviewScreen(index: index, score: score),
-                          ),
-                        );
+                      onPressed: () async {
+                        bool shouldNavigateBack = await showBackAlertDialog(
+                            context, 'Do you want to end the quiz?');
+                        if (shouldNavigateBack) {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  ReviewScreen(index: index, score: score),
+                            ),
+                          );
+                        }
                       },
                       child: Text(
                         'Complete',
@@ -283,12 +288,12 @@ class _QuizScreenState extends State<QuizScreen> {
     ).then((value) => value ?? false);
   }
 
-  Future<bool> showBackAlertDialog(BuildContext context) async {
+  Future<bool> showBackAlertDialog(BuildContext context, String title) async {
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Are you sure?'),
-        content: const Text('Do you want to go back to the previous screen?'),
+        content: Text(title),
         actions: <Widget>[
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
