@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quizzy_land/global/global_data.dart';
 import 'package:quizzy_land/global/gradient_decoration.dart';
 import 'package:quizzy_land/screens/reviews_screen.dart';
 import 'package:quizzy_land/shared/countdown_timer.dart';
@@ -50,7 +51,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0.0,
-                      backgroundColor: const Color.fromARGB(255, 120, 30, 255),
+                      backgroundColor: Color.fromARGB(255, 67, 72, 169),
                       padding: const EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 19),
                       shape: RoundedRectangleBorder(
@@ -82,8 +83,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         elevation: 0.0,
-                        backgroundColor:
-                            const Color.fromARGB(255, 120, 30, 255),
+                        backgroundColor: const Color.fromARGB(255, 67, 72, 169),
                         padding: const EdgeInsets.symmetric(
                             horizontal: 10.0, vertical: 17),
                         shape: RoundedRectangleBorder(
@@ -160,7 +160,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     horizontal: 20,
                     vertical: 20,
                   ),
-                  height: size.height * 7.5 / 10,
+                  height: size.height * 7.5 / 10 - 20,
                   width: size.width,
                   decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 245, 240, 252),
@@ -196,10 +196,10 @@ class _QuizScreenState extends State<QuizScreen> {
                           margin: const EdgeInsets.symmetric(vertical: 5),
                           child: ElevatedButton(
                             onPressed: () {
-                              score = score +
-                                  widget.questionsList[index]["answers"][i]
-                                      ["score"] as int;
-
+                              int x = widget.questionsList[index]["answers"][i]
+                                  ["score"] as int;
+                              score = score + x;
+                              myMap[i] = x;
                               if (index == widget.questionsList.length - 1) {
                                 Navigator.push(
                                   context,

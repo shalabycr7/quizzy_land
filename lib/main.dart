@@ -7,6 +7,7 @@ void main() {
   );
 }
 
+// newwwwwwwwwwwww
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.blue,
       ),
       home: const Openscreen(),
     );

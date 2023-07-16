@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:google_fonts/google_fonts.dart';
-import 'package:quizzy_land/global/global_data.dart';
-import 'package:quizzy_land/global/gradient_decoration.dart';
-import 'package:quizzy_land/screens/login_screen.dart';
-import 'package:quizzy_land/shared/card_category.dart';
+import 'package:quizzy_land/screens/quiz_screen.dart';
 
-class CategoryScreen extends StatelessWidget {
-  const CategoryScreen({super.key});
+import '../global/global_data.dart';
+import '../global/gradient_decoration.dart';
+import '../shared/card_category.dart';
+import 'login_screen.dart';
+
+class Category_Screen extends StatelessWidget {
+  const Category_Screen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,94 +18,99 @@ class CategoryScreen extends StatelessWidget {
       children: [
         Container(
           decoration: blueGradient,
+          /*  child: Text(
+            "What Do You Want To Improve Today?",
+            style: TextStyle(
+              fontFamily: 'Arial',
+              fontSize: 20.0,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),*/
         ),
         Positioned(
           left: 20,
           top: 75,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Row(
             children: [
-              Row(
-                children: [
-                  const Icon(
-                    Icons.waving_hand_outlined,
-                    color: Colors.white,
-                    size: 15,
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    'Hello ${userNameTextCont.text}',
-                    style: GoogleFonts.quicksand(
-                      fontSize: 18.0,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
+              const Icon(
+                Icons.waving_hand_outlined,
+                color: Colors.white,
+                size: 15,
               ),
               const SizedBox(
-                height: 20,
+                width: 10,
               ),
-              Row(
-                children: [
-                  Text(
-                    "Please Select A Category",
-                    style: GoogleFonts.quicksand(
-                        fontSize: 18.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600),
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  const Icon(
-                    Icons.arrow_circle_right_outlined,
-                    color: Colors.white,
-                    size: 22,
-                  )
-                ],
+              Text(
+                'Hello ${userNameTextCont.text}',
+                style: GoogleFonts.quicksand(
+                  fontSize: 18.0,
+                  color: Colors.white,
+                ),
               ),
             ],
           ),
         ),
         Positioned(
+          left: 10,
+          right: 10,
+          top: 110,
+          child: Text(
+            "What Do You Want To Improve Today?",
+            style: GoogleFonts.quicksand(
+              fontSize: 20.0,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Positioned(
           bottom: 0,
           child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.8,
-            decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 245, 240, 252),
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(25),
-              ),
+            height: MediaQuery.of(context).size.height * 0.78,
+            // color: Colors.amber,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.5),
+                  spreadRadius: 10.0,
+                  blurRadius: 10.0,
+                  offset: const Offset(0, 10),
+                ),
+              ],
             ),
             child: Column(
               children: [
                 CardCategory(
-                  images: "assets/images/biology_badge.jpg",
-                  testName: "Biology",
+                  Images: "assets/images/biology_badge.jpg",
+                  TestName: "Biology ",
                   brief:
                       "cover topics such as cell structure and function, genetics, ecology, and evolution",
+                  time: biologyTest.length,
                   numOfQuestions: biologyTest.length,
-                  time: 4,
+                  quesion: biologyTest,
                 ),
                 CardCategory(
-                  images: "assets/images/history_badge.jpeg",
-                  testName: "History",
+                  Images: "assets/images/history_badge.jpeg",
+                  TestName: "History",
                   brief:
                       "typically covers topics related to past events and civilizations, such as ancient Greece and Rome",
+                  time: historyTest.length,
                   numOfQuestions: historyTest.length,
-                  time: 2,
+                  quesion: historyTest,
                 ),
                 CardCategory(
-                  images: "assets/images/maths_badge.jpg",
-                  testName: "Maths",
+                  Images: "assets/images/maths_badge.jpg",
+                  TestName: "Math",
                   brief:
                       "covers topics related to mathematics, including algebra, geometry, trigonometry, and calculus",
+                  time: mathsTest.length,
                   numOfQuestions: mathsTest.length,
-                  time: 1,
+                  quesion: mathsTest,
                 ),
               ],
             ),

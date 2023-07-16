@@ -1,3 +1,8 @@
+Map<int, int> myMap = Map<int, int>.fromIterable(
+  List.generate(100, (index) => index),
+  key: (item) => item,
+  value: (item) => 0,
+);
 List biologyTest = [
   {
     "question": "What is the smallest unit of life?",

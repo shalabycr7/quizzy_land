@@ -36,7 +36,7 @@ class CountDown extends StatelessWidget {
             ),
             endTime: DateTime.now().add(
               Duration(
-                minutes: quizTime,
+                minutes: 1,
                 seconds: 0,
               ),
             ),
@@ -46,7 +46,8 @@ class CountDown extends StatelessWidget {
                 MaterialPageRoute(
                     builder: (context) => const ReviewScreen(
                           index: 0,
-                          score: 0,
+                          score: 0, 
+                          
                         )),
               );
             },

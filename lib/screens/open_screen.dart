@@ -43,10 +43,10 @@ class Openscreen extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18),
                         ),
-                        backgroundColor: const Color.fromARGB(255, 86, 86, 194),
+                        backgroundColor: Color.fromARGB(255, 67, 72, 169),
                         minimumSize: Size(
-                            MediaQuery.of(context).size.width * .6,
-                            MediaQuery.of(context).size.height * .05),
+                            MediaQuery.of(context).size.width * .7,
+                            MediaQuery.of(context).size.height * .06),
                         textStyle: const TextStyle(fontSize: 16.0),
                       ),
                       onPressed: () {
@@ -59,7 +59,9 @@ class Openscreen extends StatelessWidget {
                       },
                       child: Text(
                         "Start",
-                        style: GoogleFonts.quicksand(),
+                        style: GoogleFonts.quicksand(
+                          fontSize: 20,
+                        ),
                         // Color.fromARGB(255, 86, 86, 194),
                       )),
                 ],
