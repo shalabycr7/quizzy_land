@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quizzy_land/global/gradient_decoration.dart';
+import 'package:quizzy_land/screens/category_screen.dart';
 import 'package:quizzy_land/screens/login_screen.dart';
 import 'package:quizzy_land/screens/quiz_screen.dart';
 
 class ReviewScreen extends StatelessWidget {
-  const ReviewScreen({super.key});
+  final int index;
+  final int score;
+  const ReviewScreen({super.key, required this.index, required this.score});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +45,7 @@ class ReviewScreen extends StatelessWidget {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const QuizScreen(),
+                            builder: (context) => const CategoryScreen(),
                           ),
                         );
                       },
@@ -137,7 +140,7 @@ class ReviewScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'You have got 195.56 Points',
+                      'You have got ${score} Points',
                       style: GoogleFonts.quicksand(
                         textStyle: const TextStyle(
                           color: Color.fromARGB(255, 120, 30, 255),

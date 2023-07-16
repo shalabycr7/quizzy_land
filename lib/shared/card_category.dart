@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quizzy_land/global/global_data.dart';
 import 'package:quizzy_land/screens/quiz_screen.dart';
 
 class CardCategory extends StatelessWidget {
   final String? images;
-  final String? testName;
+  final String testName;
   final String? brief;
   final int? numOfQuestions;
   final int? time;
 
-  const CardCategory(
+  var qlist = {
+    'Biology': biologyTest,
+    'History': historyTest,
+    'Maths': mathsTest
+  };
+
+  CardCategory(
       {Key? key,
       this.images,
-      this.testName,
+      required this.testName,
       this.brief,
       this.numOfQuestions,
       this.time})
@@ -27,7 +34,9 @@ class CardCategory extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const QuizScreen()),
+            MaterialPageRoute(
+                builder: (context) => QuizScreen(
+                    test: testName, questionsList: qlist[testName] as List)),
           );
         },
         child: Card(
@@ -58,7 +67,7 @@ class CardCategory extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            testName!,
+                            testName,
                             style: GoogleFonts.quicksand(
                               fontSize: 21,
                               color: const Color.fromARGB(255, 120, 30, 255),

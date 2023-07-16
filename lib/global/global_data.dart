@@ -90,7 +90,7 @@ List historyTest = [
 
 /////
 
-List mathTest = [
+List mathsTest = [
   {
     "question": "How many time world cup takeplace in 12 years",
     "answers": [

@@ -78,10 +78,10 @@ class CategoryScreen extends StatelessWidget {
               ),
             ),
             child: Column(
-              children: const [
+              children: [
                 CardCategory(
                   images: "assets/images/biology_badge.jpg",
-                  testName: "Biology ",
+                  testName: "Biology",
                   brief:
                       "cover topics such as cell structure and function, genetics, ecology, and evolution",
                   numOfQuestions: 5,
@@ -97,7 +97,7 @@ class CategoryScreen extends StatelessWidget {
                 ),
                 CardCategory(
                   images: "assets/images/maths_badge.jpg",
-                  testName: "Math",
+                  testName: "Maths",
                   brief:
                       "covers topics related to mathematics, including algebra, geometry, trigonometry, and calculus",
                   numOfQuestions: 3,

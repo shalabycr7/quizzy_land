@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:quizzy_land/global/questions_index_listener.dart';
 import 'package:quizzy_land/screens/open_screen.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => MyModel(),
-      child: const MyApp(),
-    ),
+    const MyApp(),
   );
 }
 

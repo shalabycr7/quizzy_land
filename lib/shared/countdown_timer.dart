@@ -42,7 +42,11 @@ class CountDown extends StatelessWidget {
             onEnd: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const ReviewScreen()),
+                MaterialPageRoute(
+                    builder: (context) => const ReviewScreen(
+                          index: 0,
+                          score: 0,
+                        )),
               );
             },
           ),

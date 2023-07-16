@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:quizzy_land/global/choice_button.dart';
 import 'package:quizzy_land/global/global_data.dart';
 import 'package:quizzy_land/global/gradient_decoration.dart';
-import 'package:quizzy_land/global/questions_index_listener.dart';
 import 'package:quizzy_land/screens/reviews_screen.dart';
 import 'package:quizzy_land/shared/countdown_timer.dart';
 
 class QuizScreen extends StatefulWidget {
-  const QuizScreen({super.key});
+  final String? test;
+  final List questionsList;
+
+  const QuizScreen(
+      {super.key, required this.test, required this.questionsList});
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
 }
 
 class _QuizScreenState extends State<QuizScreen> {
+  int index = 0;
+  int score = 0;
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    var variableValue = Provider.of<MyModel>(context).variableValue;
 
     return WillPopScope(
       onWillPop: () => _onBackPressed(context),
@@ -87,7 +90,8 @@ class _QuizScreenState extends State<QuizScreen> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const ReviewScreen(),
+                            builder: (context) =>
+                                ReviewScreen(index: index, score: score),
                           ),
                         );
                       },
@@ -125,7 +129,7 @@ class _QuizScreenState extends State<QuizScreen> {
                       children: [
                         const CountDown(),
                         Text(
-                          'Q.${variableValue + 1}',
+                          'Q.${index + 1}/${widget.questionsList.length}',
                           style: GoogleFonts.quicksand(
                             textStyle: const TextStyle(
                               fontSize: 16,
@@ -163,7 +167,7 @@ class _QuizScreenState extends State<QuizScreen> {
                         height: 20,
                       ),
                       Text(
-                        biologyTest[variableValue]["question"],
+                        widget.questionsList[index]["question"],
                         style: GoogleFonts.quicksand(
                           textStyle: const TextStyle(
                             fontSize: 16,
@@ -174,18 +178,70 @@ class _QuizScreenState extends State<QuizScreen> {
                       const SizedBox(
                         height: 20,
                       ),
-                      ChoiceButton(
-                        title: biologyTest[variableValue]["answers"][0]['ans'],
-                      ),
-                      ChoiceButton(
-                        title: biologyTest[variableValue]["answers"][1]['ans'],
-                      ),
-                      ChoiceButton(
-                        title: biologyTest[variableValue]["answers"][2]['ans'],
-                      ),
-                      ChoiceButton(
-                        title: biologyTest[variableValue]["answers"][3]['ans'],
-                      ),
+                      for (int i = 0;
+                          i <
+                              (widget.questionsList[index]["answers"] as List)
+                                  .length;
+                          i++)
+                        Container(
+                          width: double.infinity,
+                          margin: const EdgeInsets.symmetric(vertical: 5),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              score = score +
+                                  widget.questionsList[index]["answers"][i]
+                                      ["score"] as int;
+
+                              if (index == widget.questionsList.length - 1) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ReviewScreen(
+                                            index: index,
+                                            score: score,
+                                          )),
+                                );
+                              } else {
+                                setState(() {
+                                  index++; // i changed the state (Data)
+                                });
+
+                                print(widget.questionsList[index]["answers"][i]
+                                    ["score"]);
+
+                                print(score);
+                              }
+                            },
+                            style: ButtonStyle(
+                                elevation: MaterialStateProperty.all(0),
+                                padding: MaterialStateProperty.all(
+                                    const EdgeInsets.symmetric(
+                                        vertical: 25, horizontal: 15)),
+                                backgroundColor: getColor(Colors.white,
+                                    const Color.fromARGB(255, 120, 30, 255)),
+                                foregroundColor:
+                                    getColor(Colors.black, Colors.white),
+                                shape: MaterialStateProperty.all(
+                                    RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  side: const BorderSide(
+                                      color: Colors.grey, width: 0.5),
+                                ))),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  widget.questionsList[index]["answers"][i]
+                                      ["ans"],
+                                  style: GoogleFonts.quicksand(
+                                    fontSize: 14,
+                                  ),
+                                ),
+                                const Icon(Icons.arrow_forward, size: 16.0),
+                              ],
+                            ),
+                          ),
+                        )
                     ],
                   ),
                 ),
@@ -195,6 +251,18 @@ class _QuizScreenState extends State<QuizScreen> {
         ),
       ),
     );
+  }
+
+  MaterialStateProperty<Color> getColor(Color color, Color colorPressed) {
+    getColor(Set<MaterialState> states) {
+      if (states.contains(MaterialState.pressed)) {
+        return colorPressed;
+      } else {
+        return color;
+      }
+    }
+
+    return MaterialStateProperty.resolveWith(getColor);
   }
 
   Future<bool> _onBackPressed(BuildContext context) async {
