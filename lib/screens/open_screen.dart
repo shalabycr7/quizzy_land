@@ -50,7 +50,7 @@ class Openscreen extends StatelessWidget {
                         textStyle: const TextStyle(fontSize: 16.0),
                       ),
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const LoginScreen(),
