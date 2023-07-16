@@ -91,12 +91,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       SizedBox(
                         width: size.width / 2 - 60,
                         height: 45,
                         child: ElevatedButton(
-                          style: roundButtonDecor(Color.fromARGB(255, 120, 30, 255)),
+                          style: roundButtonDecor(const Color.fromARGB(255, 120, 30, 255)),
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               Navigator.pushReplacement(

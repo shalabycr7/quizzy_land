@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:quizzy_land/global/gradient_decoration.dart';
 import 'package:quizzy_land/screens/category_screen.dart';
 import 'package:quizzy_land/screens/login_screen.dart';
-import 'package:quizzy_land/screens/quiz_screen.dart';
 
 class ReviewScreen extends StatelessWidget {
   final int index;
@@ -140,7 +139,7 @@ class ReviewScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'You have got ${score} Points',
+                      'You have got $score Points',
                       style: GoogleFonts.quicksand(
                         textStyle: const TextStyle(
                           color: Color.fromARGB(255, 120, 30, 255),

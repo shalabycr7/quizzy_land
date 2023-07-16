@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:quizzy_land/global/global_data.dart';
 import 'package:quizzy_land/global/gradient_decoration.dart';
 import 'package:quizzy_land/screens/reviews_screen.dart';
 import 'package:quizzy_land/shared/countdown_timer.dart';
@@ -8,9 +7,9 @@ import 'package:quizzy_land/shared/countdown_timer.dart';
 class QuizScreen extends StatefulWidget {
   final String? test;
   final List questionsList;
-  var time;
+  final int time;
 
-  QuizScreen(
+  const QuizScreen(
       {super.key,
       required this.test,
       required this.questionsList,
@@ -209,11 +208,6 @@ class _QuizScreenState extends State<QuizScreen> {
                                 setState(() {
                                   index++; // i changed the state (Data)
                                 });
-
-                                print(widget.questionsList[index]["answers"][i]
-                                    ["score"]);
-
-                                print(score);
                               }
                             },
                             style: ButtonStyle(
@@ -273,16 +267,16 @@ class _QuizScreenState extends State<QuizScreen> {
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Are you sure?'),
-        content: Text('Do you want to go back to the previous screen?'),
+        title: const Text('Are you sure?'),
+        content: const Text('Do you want to go back to the previous screen?'),
         actions: <Widget>[
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: Text('No'),
+            child: const Text('No'),
           ),
           TextButton(
             onPressed: () => Navigator.of(context).pop(true),
-            child: Text('Yes'),
+            child: const Text('Yes'),
           ),
         ],
       ),
@@ -293,16 +287,16 @@ class _QuizScreenState extends State<QuizScreen> {
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Are you sure?'),
-        content: Text('Do you want to go back to the previous screen?'),
+        title: const Text('Are you sure?'),
+        content: const Text('Do you want to go back to the previous screen?'),
         actions: <Widget>[
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: Text('No'),
+            child: const Text('No'),
           ),
           TextButton(
             onPressed: () => Navigator.of(context).pop(true),
-            child: Text('Yes'),
+            child: const Text('Yes'),
           ),
         ],
       ),

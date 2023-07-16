@@ -10,7 +10,7 @@ class CardCategory extends StatelessWidget {
   final int? numOfQuestions;
   final int time;
 
-  var qlist = {
+  final Map<String, List<dynamic>> qlist = {
     'Biology': biologyTest,
     'History': historyTest,
     'Maths': mathsTest
@@ -106,7 +106,7 @@ class CardCategory extends StatelessWidget {
                         color: Color.fromARGB(255, 120, 30, 255), size: 20.0),
                     const SizedBox(width: 10),
                     Text(
-                      "${time} mins",
+                      "$time mins",
                       style: GoogleFonts.quicksand(fontSize: 15),
                     ),
                   ],
