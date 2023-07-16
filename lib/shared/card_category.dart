@@ -8,7 +8,7 @@ class CardCategory extends StatelessWidget {
   final String testName;
   final String? brief;
   final int? numOfQuestions;
-  final int? time;
+  final int time;
 
   var qlist = {
     'Biology': biologyTest,
@@ -22,7 +22,7 @@ class CardCategory extends StatelessWidget {
       required this.testName,
       this.brief,
       this.numOfQuestions,
-      this.time})
+      required this.time})
       : super(key: key);
 
   @override
@@ -36,7 +36,10 @@ class CardCategory extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) => QuizScreen(
-                    test: testName, questionsList: qlist[testName] as List)),
+                      test: testName,
+                      questionsList: qlist[testName] as List,
+                      time: time,
+                    )),
           );
         },
         child: Card(
@@ -103,7 +106,7 @@ class CardCategory extends StatelessWidget {
                         color: Color.fromARGB(255, 120, 30, 255), size: 20.0),
                     const SizedBox(width: 10),
                     Text(
-                      "${time!} mins",
+                      "${time} mins",
                       style: GoogleFonts.quicksand(fontSize: 15),
                     ),
                   ],

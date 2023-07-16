@@ -3,7 +3,8 @@ import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:quizzy_land/screens/reviews_screen.dart';
 
 class CountDown extends StatelessWidget {
-  const CountDown({Key? key}) : super(key: key);
+  final int quizTime;
+  const CountDown({Key? key, required this.quizTime}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +35,8 @@ class CountDown extends StatelessWidget {
               color: Colors.white,
             ),
             endTime: DateTime.now().add(
-              const Duration(
-                minutes: 1,
+              Duration(
+                minutes: quizTime,
                 seconds: 0,
               ),
             ),

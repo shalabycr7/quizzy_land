@@ -8,9 +8,13 @@ import 'package:quizzy_land/shared/countdown_timer.dart';
 class QuizScreen extends StatefulWidget {
   final String? test;
   final List questionsList;
+  var time;
 
-  const QuizScreen(
-      {super.key, required this.test, required this.questionsList});
+  QuizScreen(
+      {super.key,
+      required this.test,
+      required this.questionsList,
+      required this.time});
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
@@ -127,7 +131,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const CountDown(),
+                        CountDown(quizTime: widget.time),
                         Text(
                           'Q.${index + 1}/${widget.questionsList.length}',
                           style: GoogleFonts.quicksand(

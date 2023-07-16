@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quizzy_land/global/global_data.dart';
 import 'package:quizzy_land/global/gradient_decoration.dart';
 import 'package:quizzy_land/screens/login_screen.dart';
 import 'package:quizzy_land/shared/card_category.dart';
@@ -84,7 +85,7 @@ class CategoryScreen extends StatelessWidget {
                   testName: "Biology",
                   brief:
                       "cover topics such as cell structure and function, genetics, ecology, and evolution",
-                  numOfQuestions: 5,
+                  numOfQuestions: biologyTest.length,
                   time: 4,
                 ),
                 CardCategory(
@@ -92,7 +93,7 @@ class CategoryScreen extends StatelessWidget {
                   testName: "History",
                   brief:
                       "typically covers topics related to past events and civilizations, such as ancient Greece and Rome",
-                  numOfQuestions: 4,
+                  numOfQuestions: historyTest.length,
                   time: 2,
                 ),
                 CardCategory(
@@ -100,7 +101,7 @@ class CategoryScreen extends StatelessWidget {
                   testName: "Maths",
                   brief:
                       "covers topics related to mathematics, including algebra, geometry, trigonometry, and calculus",
-                  numOfQuestions: 3,
+                  numOfQuestions: mathsTest.length,
                   time: 1,
                 ),
               ],

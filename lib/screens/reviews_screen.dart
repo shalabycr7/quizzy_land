@@ -102,7 +102,7 @@ class ReviewScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 90, 20, 40),
                   child: Text(
-                    '$score out of $index are correct',
+                    '$score out of ${index + 1} are correct',
                     style: GoogleFonts.quicksand(
                       textStyle: const TextStyle(
                           color: Colors.white,
