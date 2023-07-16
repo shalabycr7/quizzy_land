@@ -11,7 +11,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  provider: ^6.0.0
 
   cupertino_icons: ^1.0.2
   flutter_timer_countdown: ^1.0.5
@@ -28,3 +27,4 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/google_fonts
