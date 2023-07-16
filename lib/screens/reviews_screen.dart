@@ -282,7 +282,7 @@ Future<bool> _onBackPressed(BuildContext context) async {
     context: context,
     builder: (context) => AlertDialog(
       title: const Text('Are you sure?'),
-      content: const Text('Do you want to go back to the previous screen?'),
+      content: const Text('Do you want to go back to the category section?'),
       actions: <Widget>[
         TextButton(
           onPressed: () => Navigator.of(context).pop(false),
