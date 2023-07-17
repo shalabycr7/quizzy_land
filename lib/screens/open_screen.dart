@@ -46,7 +46,7 @@ class Openscreen extends StatelessWidget {
                         backgroundColor: const Color.fromARGB(255, 86, 86, 194),
                         minimumSize: Size(
                             MediaQuery.of(context).size.width * .6,
-                            MediaQuery.of(context).size.height * .05),
+                            MediaQuery.of(context).size.height * .05 + 15),
                         textStyle: const TextStyle(fontSize: 16.0),
                       ),
                       onPressed: () {
@@ -59,7 +59,7 @@ class Openscreen extends StatelessWidget {
                       },
                       child: Text(
                         "Start",
-                        style: GoogleFonts.quicksand(),
+                        style: GoogleFonts.quicksand(fontSize: 18),
                         // Color.fromARGB(255, 86, 86, 194),
                       )),
                 ],

@@ -47,7 +47,7 @@ class CategoryScreen extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "Please Select A Category",
+                    "What Do You Want To Improve Today?",
                     style: GoogleFonts.quicksand(
                         fontSize: 18.0,
                         color: Colors.white,
@@ -69,14 +69,21 @@ class CategoryScreen extends StatelessWidget {
         Positioned(
           bottom: 0,
           child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * 0.8,
-            decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 245, 240, 252),
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(25),
-              ),
+            // color: Colors.amber,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.5),
+                  spreadRadius: 10.0,
+                  blurRadius: 10.0,
+                  offset: const Offset(0, 10),
+                ),
+              ],
             ),
             child: Column(
               children: [
@@ -86,7 +93,7 @@ class CategoryScreen extends StatelessWidget {
                   brief:
                       "cover topics such as cell structure and function, genetics, ecology, and evolution",
                   numOfQuestions: biologyTest.length,
-                  time: 4,
+                  time: biologyTest.length,
                 ),
                 CardCategory(
                   images: "assets/images/history_badge.jpeg",
@@ -94,7 +101,7 @@ class CategoryScreen extends StatelessWidget {
                   brief:
                       "typically covers topics related to past events and civilizations, such as ancient Greece and Rome",
                   numOfQuestions: historyTest.length,
-                  time: 2,
+                  time: historyTest.length,
                 ),
                 CardCategory(
                   images: "assets/images/maths_badge.jpg",
@@ -102,7 +109,7 @@ class CategoryScreen extends StatelessWidget {
                   brief:
                       "covers topics related to mathematics, including algebra, geometry, trigonometry, and calculus",
                   numOfQuestions: mathsTest.length,
-                  time: 1,
+                  time: mathsTest.length,
                 ),
               ],
             ),

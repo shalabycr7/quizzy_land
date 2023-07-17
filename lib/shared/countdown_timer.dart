@@ -36,7 +36,7 @@ class CountDown extends StatelessWidget {
             ),
             endTime: DateTime.now().add(
               Duration(
-                minutes: quizTime,
+                minutes: 1,
                 seconds: 0,
               ),
             ),

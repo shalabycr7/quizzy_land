@@ -5,8 +5,8 @@ BoxDecoration blueGradient = const BoxDecoration(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
     colors: [
-      Color.fromARGB(255, 120, 30, 255),
-      Color.fromARGB(255, 175, 84, 255)
+      Color.fromARGB(255, 112, 112, 212),
+      Color.fromARGB(255, 67, 72, 169),
     ],
   ),
 );

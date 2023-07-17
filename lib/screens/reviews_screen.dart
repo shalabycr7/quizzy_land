@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quizzy_land/global/global_data.dart';
 import 'package:quizzy_land/global/gradient_decoration.dart';
 import 'package:quizzy_land/screens/category_screen.dart';
 import 'package:quizzy_land/screens/login_screen.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class ReviewScreen extends StatelessWidget {
   final int index;
@@ -11,268 +13,213 @@ class ReviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double ff = (score / (index + 1));
+    double f1 = double.parse((0.75).toStringAsFixed(2));
     return WillPopScope(
       onWillPop: () => _onBackPressed(context),
-      child: Scaffold(
-          bottomNavigationBar: Container(
-            height: 100,
-            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-            decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 245, 240, 252),
-            ),
-            child: Column(
-              children: [
-                const Divider(
-                  thickness: 1,
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Expanded(
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          elevation: 0.0,
-                          backgroundColor: Colors.grey,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10.0, vertical: 17),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const CategoryScreen(),
-                            ),
-                          );
-                        },
+      child: SafeArea(
+          child: Scaffold(
+              bottomNavigationBar: Container(
+                  decoration: blueGradient,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(50),
                         child: Text(
-                          'Try again',
-                          style: GoogleFonts.quicksand(
-                            textStyle: const TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.w500),
+                          "${score} out of ${index + 1} are correct",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                      ),
+                      Expanded(
+                          child: Container(
+                        height: MediaQuery.of(context).size.height * 4 / 5,
+                        decoration: BoxDecoration(
+                            color: Color.fromRGBO(246, 241, 248, 1),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(60),
+                                topRight: Radius.circular(60))),
+                        width: MediaQuery.of(context).size.width,
+                        child: Column(children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.all(30),
+                            child: CircularPercentIndicator(
+                              radius: 100.0,
+                              lineWidth: 15.0,
+                              percent: ff,
+                              center: Text(
+                                "${double.parse(ff.toStringAsFixed(2)) * 100}%",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.0,
+                                ),
+                              ),
+                              progressColor:
+                                  const Color.fromARGB(255, 86, 86, 194),
+                            ),
                           ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          elevation: 0.0,
-                          backgroundColor:
-                              const Color.fromARGB(255, 120, 30, 255),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10.0, vertical: 17),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
+                          const Text(
+                            'Congratulations',
+                            style: TextStyle(
+                                color: const Color.fromARGB(255, 86, 86, 194),
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
                           ),
-                        ),
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const LoginScreen(),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          'Go to home',
-                          style: GoogleFonts.quicksand(
-                            textStyle: const TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.w500),
+                          Text(
+                            'You have got $score Points',
+                            style: TextStyle(
+                                color: const Color.fromARGB(255, 86, 86, 194),
+                                fontSize: 10),
                           ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ],
-            ),
-          ),
-          body: Container(
-              decoration: blueGradient,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 90, 20, 40),
-                    child: Text(
-                      '$score out of ${index + 1} are correct',
-                      style: GoogleFonts.quicksand(
-                        textStyle: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                      child: Container(
-                    height: MediaQuery.of(context).size.height * 4 / 5,
-                    decoration: const BoxDecoration(
-                      color: Color.fromRGBO(246, 241, 248, 1),
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(25),
-                      ),
-                    ),
-                    width: MediaQuery.of(context).size.width,
-                    child: Column(children: <Widget>[
-                      const Padding(
-                        padding: EdgeInsets.all(30),
-                        child: Icon(
-                          Icons.lightbulb_outline_rounded,
-                          size: 150,
-                          color: Color.fromARGB(255, 120, 30, 255),
-                        ),
-                      ),
-                      Text(
-                        'Congratulations',
-                        style: GoogleFonts.quicksand(
-                          textStyle: const TextStyle(
-                              color: Color.fromARGB(255, 120, 30, 255),
-                              fontSize: 22,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ),
-                      Text(
-                        'You have got $score Points',
-                        style: GoogleFonts.quicksand(
-                          textStyle: const TextStyle(
-                            color: Color.fromARGB(255, 120, 30, 255),
-                            fontSize: 15,
+                          const SizedBox(height: 20),
+                          const Text(
+                            'Here is  The Result ',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 0, 0, 0),
+                                fontSize: 10),
                           ),
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.all(
-                                  MediaQuery.of(context).size.width * .009),
-                              child: ElevatedButton(
-                                  style: ButtonStyle(
-                                    elevation: MaterialStateProperty.all(0),
-                                    minimumSize: MaterialStatePropertyAll(Size(
-                                        MediaQuery.of(context).size.width * .12,
-                                        MediaQuery.of(context).size.width *
-                                            .12)),
-                                    backgroundColor:
-                                        MaterialStateProperty.all(Colors.green),
-                                  ),
-                                  onPressed: () {},
-                                  child: Text(
-                                    "1",
-                                    style: GoogleFonts.quicksand(
-                                      textStyle: const TextStyle(
-                                        fontSize: 15,
+                          const SizedBox(height: 20),
+                          Wrap(
+                              //mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                for (int i = 0; i < ((index + 1)); i++)
+                                  if (numbers[i] == 0)
+                                    Padding(
+                                      padding: EdgeInsets.all(
+                                          MediaQuery.of(context).size.width *
+                                              .009),
+                                      child: ElevatedButton(
+                                          style: ButtonStyle(
+                                            minimumSize:
+                                                MaterialStatePropertyAll(Size(
+                                                    MediaQuery.of(context)
+                                                            .size
+                                                            .width *
+                                                        .12,
+                                                    MediaQuery.of(context)
+                                                            .size
+                                                            .width *
+                                                        .12)),
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    Colors.red),
+                                          ),
+                                          onPressed: () {},
+                                          child: Text(
+                                            "${i + 1}",
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                            ),
+                                          )),
+                                    )
+                                  else
+                                    Padding(
+                                      padding: EdgeInsets.all(
+                                          MediaQuery.of(context).size.width *
+                                              .009),
+                                      child: ElevatedButton(
+                                          style: ButtonStyle(
+                                            minimumSize:
+                                                MaterialStatePropertyAll(Size(
+                                                    MediaQuery.of(context)
+                                                            .size
+                                                            .width *
+                                                        .12,
+                                                    MediaQuery.of(context)
+                                                            .size
+                                                            .width *
+                                                        .12)),
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    Colors.green),
+                                          ),
+                                          onPressed: () {},
+                                          child: Text(
+                                            "${i + 1}",
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                            ),
+                                          )),
+                                    ),
+                              ]),
+                          const Spacer(),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Expanded(
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      elevation: 0.0,
+                                      backgroundColor: Colors.grey,
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10.0, vertical: 17),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
                                       ),
                                     ),
-                                  )),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(
-                                  MediaQuery.of(context).size.width * .009),
-                              child: ElevatedButton(
-                                  style: ButtonStyle(
-                                    elevation: MaterialStateProperty.all(0),
-                                    minimumSize: MaterialStatePropertyAll(Size(
-                                        MediaQuery.of(context).size.width * .12,
-                                        MediaQuery.of(context).size.width *
-                                            .12)),
-                                    backgroundColor:
-                                        MaterialStateProperty.all(Colors.green),
-                                  ),
-                                  onPressed: () {},
-                                  child: Text(
-                                    "2",
-                                    style: GoogleFonts.quicksand(
-                                      textStyle: const TextStyle(
-                                        fontSize: 15,
+                                    onPressed: () {
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const CategoryScreen(),
+                                        ),
+                                      );
+                                    },
+                                    child: Text(
+                                      'Try again',
+                                      style: GoogleFonts.quicksand(
+                                        textStyle: const TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w500),
                                       ),
                                     ),
-                                  )),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(
-                                  MediaQuery.of(context).size.width * .009),
-                              child: ElevatedButton(
-                                  style: ButtonStyle(
-                                    elevation: MaterialStateProperty.all(0),
-                                    minimumSize: MaterialStatePropertyAll(Size(
-                                        MediaQuery.of(context).size.width * .12,
-                                        MediaQuery.of(context).size.width *
-                                            .12)),
-                                    backgroundColor:
-                                        MaterialStateProperty.all(Colors.red),
                                   ),
-                                  onPressed: () {},
-                                  child: Text(
-                                    "3",
-                                    style: GoogleFonts.quicksand(
-                                      textStyle: const TextStyle(
-                                        fontSize: 15,
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Expanded(
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      elevation: 0.0,
+                                      backgroundColor: const Color.fromARGB(
+                                          255, 86, 86, 194),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10.0, vertical: 17),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
                                       ),
                                     ),
-                                  )),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(
-                                  MediaQuery.of(context).size.width * .009),
-                              child: ElevatedButton(
-                                  style: ButtonStyle(
-                                    elevation: MaterialStateProperty.all(0),
-                                    minimumSize: MaterialStatePropertyAll(Size(
-                                        MediaQuery.of(context).size.width * .12,
-                                        MediaQuery.of(context).size.width *
-                                            .12)),
-                                    backgroundColor:
-                                        MaterialStateProperty.all(Colors.red),
-                                  ),
-                                  onPressed: () {},
-                                  child: Text(
-                                    "4",
-                                    style: GoogleFonts.quicksand(
-                                      textStyle: const TextStyle(
-                                        fontSize: 15,
+                                    onPressed: () {
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const LoginScreen(),
+                                        ),
+                                      );
+                                    },
+                                    child: Text(
+                                      'Go to home',
+                                      style: GoogleFonts.quicksand(
+                                        textStyle: const TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w500),
                                       ),
                                     ),
-                                  )),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(
-                                  MediaQuery.of(context).size.width * .009),
-                              child: ElevatedButton(
-                                  style: ButtonStyle(
-                                    elevation: MaterialStateProperty.all(0),
-                                    minimumSize: MaterialStatePropertyAll(Size(
-                                        MediaQuery.of(context).size.width * .12,
-                                        MediaQuery.of(context).size.width *
-                                            .12)),
-                                    backgroundColor:
-                                        MaterialStateProperty.all(Colors.red),
                                   ),
-                                  onPressed: () {},
-                                  child: Text(
-                                    "5",
-                                    style: GoogleFonts.quicksand(
-                                      textStyle: const TextStyle(
-                                        fontSize: 15,
-                                      ),
-                                    ),
-                                  )),
+                                )
+                              ],
                             ),
-                          ]),
-                    ]),
-                  )),
-                ],
-              ))),
+                          ),
+                        ]),
+                      )),
+                    ],
+                  )))),
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quizzy_land/global/global_data.dart';
 import 'package:quizzy_land/global/gradient_decoration.dart';
+import 'package:quizzy_land/main.dart';
 import 'package:quizzy_land/screens/reviews_screen.dart';
 import 'package:quizzy_land/shared/countdown_timer.dart';
 
@@ -196,9 +198,10 @@ class _QuizScreenState extends State<QuizScreen> {
                           margin: const EdgeInsets.symmetric(vertical: 5),
                           child: ElevatedButton(
                             onPressed: () {
-                              score = score +
-                                  widget.questionsList[index]["answers"][i]
-                                      ["score"] as int;
+                              int x = widget.questionsList[index]["answers"][i]
+                                  ["score"] as int;
+                              score = score + x;
+                              numbers.add(x);
 
                               if (index == widget.questionsList.length - 1) {
                                 Navigator.pushReplacement(
@@ -221,7 +224,7 @@ class _QuizScreenState extends State<QuizScreen> {
                                     const EdgeInsets.symmetric(
                                         vertical: 25, horizontal: 15)),
                                 backgroundColor: getColor(Colors.white,
-                                    const Color.fromARGB(255, 120, 30, 255)),
+                                    const Color.fromARGB(255, 86, 86, 194)),
                                 foregroundColor:
                                     getColor(Colors.black, Colors.white),
                                 shape: MaterialStateProperty.all(
