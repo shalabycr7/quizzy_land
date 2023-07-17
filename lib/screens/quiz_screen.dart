@@ -100,7 +100,7 @@ class _QuizScreenState extends State<QuizScreen> {
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  ReviewScreen(index: index, score: score),
+                                  ReviewScreen(index: index - 1, score: score),
                             ),
                           );
                         }
@@ -198,6 +198,7 @@ class _QuizScreenState extends State<QuizScreen> {
                           margin: const EdgeInsets.symmetric(vertical: 5),
                           child: ElevatedButton(
                             onPressed: () {
+                              if (index == 0) numbers.clear();
                               int x = widget.questionsList[index]["answers"][i]
                                   ["score"] as int;
                               score = score + x;
