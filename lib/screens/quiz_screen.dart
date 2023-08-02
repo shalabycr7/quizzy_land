@@ -65,9 +65,9 @@ class _QuizScreenState extends State<QuizScreen> {
                         Navigator.of(context).pop();
                       }
                     },
-                    child: Row(
+                    child: const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
+                      children: [
                         Icon(
                           Icons.arrow_back_ios_new_sharp,
                           size: 15,
