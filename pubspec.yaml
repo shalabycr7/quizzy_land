@@ -6,7 +6,7 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.19.6 <3.0.0"
+  sdk: ">=3.0.6 <4.0.0"
 
 dependencies:
   flutter:
@@ -14,7 +14,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   flutter_timer_countdown: ^1.0.5
-  google_fonts: ^4.0.4
+  google_fonts: ^5.1.0
 
 dev_dependencies:
   flutter_test:
