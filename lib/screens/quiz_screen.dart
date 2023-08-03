@@ -31,7 +31,7 @@ class _QuizScreenState extends State<QuizScreen> {
       child: SafeArea(
         child: Scaffold(
           bottomNavigationBar: Container(
-            height: 80.h,
+            height: 100,
             padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
             decoration: const BoxDecoration(
               color: Color.fromARGB(255, 245, 240, 252),

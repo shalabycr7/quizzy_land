@@ -54,8 +54,9 @@ class CardCategory extends StatelessWidget {
                 children: [
                   Image.asset(
                     images!,
-                    width: 0.2.sw,
-                    height: 0.2.sw,
+                    width: ScreenUtil().orientation == Orientation.portrait
+                        ? 80.w
+                        : 40.w,
                   ),
                   SizedBox(width: 20.w),
                   Expanded(

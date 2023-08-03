@@ -26,10 +26,10 @@ class CategoryScreen extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.waving_hand_outlined,
                       color: Colors.white,
-                      size: 15.w,
+                      size: 15,
                     ),
                     SizedBox(
                       width: 10.w,
@@ -58,10 +58,10 @@ class CategoryScreen extends StatelessWidget {
                     SizedBox(
                       width: 15.w,
                     ),
-                    Icon(
+                    const Icon(
                       Icons.arrow_circle_right_outlined,
                       color: Colors.white,
-                      size: 22.w,
+                      size: 22,
                     )
                   ],
                 ),
@@ -84,7 +84,7 @@ class CategoryScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     CardCategory(
-                      images: "assets/images/biology_badge.jpg",
+                      images: "assets/images/biology_badge.png",
                       testName: "Biology",
                       brief:
                           "cover topics such as cell structure and function, genetics, ecology, and evolution",
@@ -92,7 +92,7 @@ class CategoryScreen extends StatelessWidget {
                       time: 4,
                     ),
                     CardCategory(
-                      images: "assets/images/history_badge.jpeg",
+                      images: "assets/images/history_badge.png",
                       testName: "History",
                       brief:
                           "typically covers topics related to past events and civilizations, such as ancient Greece and Rome",
@@ -100,7 +100,7 @@ class CategoryScreen extends StatelessWidget {
                       time: 2,
                     ),
                     CardCategory(
-                      images: "assets/images/maths_badge.jpg",
+                      images: "assets/images/maths_badge.png",
                       testName: "Maths",
                       brief:
                           "covers topics related to mathematics, including algebra, geometry, trigonometry, and calculus",

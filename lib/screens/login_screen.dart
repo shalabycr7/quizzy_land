@@ -93,7 +93,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Theme.of(context).primaryColor,
-                            minimumSize: Size(.4.sw, .11.sw),
                           ),
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
