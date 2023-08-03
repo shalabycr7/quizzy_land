@@ -90,7 +90,7 @@ class CardCategory extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Icon(Icons.info_outline,
-                        color: Theme.of(context).primaryColor, size: 20.0.w),
+                        color: Theme.of(context).primaryColor, size: 20.0),
                     SizedBox(width: 10.w),
                     Text(
                       "${numOfQuestions!} quizzes",
@@ -98,7 +98,7 @@ class CardCategory extends StatelessWidget {
                     ),
                     SizedBox(width: 10.w),
                     Icon(Icons.timer_outlined,
-                        color: Theme.of(context).primaryColor, size: 20.0.w),
+                        color: Theme.of(context).primaryColor, size: 20.0),
                     SizedBox(width: 10.w),
                     Text(
                       "$time mins",

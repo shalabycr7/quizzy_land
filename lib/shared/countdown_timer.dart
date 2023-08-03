@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:quizzy_land/screens/reviews_screen.dart';
 
@@ -19,12 +20,12 @@ class CountDown extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const Padding(
-            padding: EdgeInsets.only(right: 5),
+          Padding(
+            padding: const EdgeInsets.only(right: 5),
             child: Icon(
               Icons.timer_outlined,
               color: Colors.white,
-              size: 20,
+              size: 18.w,
             ),
           ),
           TimerCountdown(

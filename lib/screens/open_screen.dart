@@ -10,72 +10,44 @@ class Openscreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Positioned(
-              top: 0,
-              left: 0,
-              child: Image.asset(
-                'assets/images/math.png',
-                width: .4.sw,
-                height: .2.sh,
+    return SafeArea(
+      child: Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(
+                'assets/images/logo.svg',
+                color: Theme.of(context).primaryColor,
+                width: ScreenUtil().setWidth(110),
+                height: ScreenUtil().setHeight(110),
+                fit: BoxFit.contain,
               ),
-            ),
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SvgPicture.asset(
-                    'assets/images/logo.svg',
-                    color: Theme.of(context).primaryColor,
-                    width: .2.sw,
-                    height: .2.sh,
+              SizedBox(
+                height: 80.h,
+              ),
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).primaryColor,
+                    // minimumSize: Size(.5.sw, .05.sh),
                   ),
-                  SizedBox(
-                    height: 80.h,
-                  ),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).primaryColor,
-                        minimumSize: Size(.5.sw, .05.sh),
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginScreen(),
                       ),
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const LoginScreen(),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        "Start",
-                        style: GoogleFonts.quicksand(
-                            color: Colors.white,
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w500),
-                      )),
-                ],
-              ),
-            ),
-            Positioned(
-              top: 0,
-              right: 0,
-              child: Image.asset(
-                'assets/images/cimc.png',
-                width: 0.4.sw,
-                height: 0.2.sh,
-              ),
-            ),
-            Positioned(
-              bottom: 0,
-              child: Image.asset(
-                'assets/images/hist.png',
-                width: ScreenUtil().screenWidth,
-              ),
-            ),
-          ],
+                    );
+                  },
+                  child: Text(
+                    "Start",
+                    style: GoogleFonts.quicksand(
+                        color: Colors.white,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500),
+                  )),
+            ],
+          ),
         ),
       ),
     );
