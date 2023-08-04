@@ -172,7 +172,8 @@ class ReviewScreen extends StatelessWidget {
                                 Padding(
                                   padding: EdgeInsets.all(.01.sw),
                                   child: CircleAvatar(
-                                    backgroundColor: Colors.red,
+                                    backgroundColor:
+                                        const Color.fromARGB(255, 232, 65, 53),
                                     radius: 25,
                                     child: Text(
                                       '${i + 1}',
@@ -189,7 +190,8 @@ class ReviewScreen extends StatelessWidget {
                                 Padding(
                                   padding: EdgeInsets.all(.01.sw),
                                   child: CircleAvatar(
-                                    backgroundColor: Colors.green,
+                                    backgroundColor:
+                                        const Color.fromARGB(255, 70, 162, 73),
                                     radius: 25,
                                     child: Text(
                                       '${i + 1}',

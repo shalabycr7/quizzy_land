@@ -18,7 +18,6 @@ class Openscreen extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 'assets/images/logo.svg',
-                color: Theme.of(context).primaryColor,
                 width: ScreenUtil().setWidth(110),
                 height: ScreenUtil().setHeight(110),
                 fit: BoxFit.contain,
