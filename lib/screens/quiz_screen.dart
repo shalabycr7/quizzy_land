@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quizzy_land/cubits/questions_cubit/cubit/questions_cubit.dart';
+import 'package:quizzy_land/global/global_data.dart';
 import 'package:quizzy_land/global/gradient_decoration.dart';
 import 'package:quizzy_land/screens/reviews_screen.dart';
 import 'package:quizzy_land/shared/countdown_timer.dart';
@@ -32,11 +33,12 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   void navOnTimeOut() {
+
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
         builder: (context) => ReviewScreen(
-            index: context.read<QuestionsCubit>().index, score: score),
+            index: context.read<QuestionsCubit>().index - 1, score: score),
       ),
     );
   }
@@ -217,11 +219,15 @@ class _QuizScreenState extends State<QuizScreen> {
                                       const EdgeInsets.symmetric(vertical: 5),
                                   child: ElevatedButton(
                                     onPressed: () {
-                                      score = score +
-                                              widget.questionsList[context
-                                                  .read<QuestionsCubit>()
-                                                  .index]["answers"][i]["score"]
-                                          as int;
+                                      if (context
+                                              .read<QuestionsCubit>()
+                                              .index ==
+                                          0) numbers.clear();
+                                      int x = widget.questionsList[context
+                                          .read<QuestionsCubit>()
+                                          .index]["answers"][i]["score"] as int;
+                                      score = score + x;
+                                      numbers.add(x);
 
                                       if (context
                                               .read<QuestionsCubit>()
