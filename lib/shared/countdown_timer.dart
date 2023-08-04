@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
-import 'package:quizzy_land/screens/reviews_screen.dart';
 
 class CountDown extends StatelessWidget {
   final int quizTime;
-  const CountDown({Key? key, required this.quizTime}) : super(key: key);
+  final Function timeOut;
+  const CountDown({Key? key, required this.quizTime,required this.timeOut}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,14 +42,7 @@ class CountDown extends StatelessWidget {
               ),
             ),
             onEnd: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const ReviewScreen(
-                          index: 0,
-                          score: 0,
-                        )),
-              );
+              timeOut();
             },
           ),
         ],
