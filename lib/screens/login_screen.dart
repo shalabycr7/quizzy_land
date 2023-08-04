@@ -18,6 +18,12 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
 
   @override
+  void dispose() {
+    super.dispose();
+    userNameTextCont.clear();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -50,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   height: (2 / 3).sh,
                   decoration: const BoxDecoration(
-                    color: Colors.white,
+                    color: Color.fromARGB(255, 245, 240, 252),
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(20),
                     ),
@@ -83,6 +89,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                 const EdgeInsets.symmetric(vertical: 15),
                             prefixIcon: const Icon(Icons.person),
                             hintText: "Username",
+                            hintStyle: GoogleFonts.quicksand(
+                              textStyle: TextStyle(
+                                  fontSize: 12.sp, fontWeight: FontWeight.w500),
+                            ),
                             filled: false,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
@@ -92,8 +102,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         const Spacer(),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Theme.of(context).primaryColor,
-                          ),
+                              backgroundColor: Theme.of(context).primaryColor,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 40, vertical: 10)),
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               Navigator.pushReplacement(

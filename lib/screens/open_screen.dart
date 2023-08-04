@@ -12,6 +12,7 @@ class Openscreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: const Color.fromARGB(255, 245, 240, 252),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
