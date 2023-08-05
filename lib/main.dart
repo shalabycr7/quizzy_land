@@ -3,8 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quizzy_land/cubits/questions_cubit/cubit/questions_cubit.dart';
 import 'package:quizzy_land/screens/login_screen.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Color(0xFF781EFF),
+  ));
   runApp(
     const MyApp(),
   );

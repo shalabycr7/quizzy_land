@@ -11,9 +11,9 @@ class CategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-          body: Stack(
+    return Scaffold(
+        body: SafeArea(
+      child: Stack(
         children: [
           Container(
             decoration: blueGradient,
@@ -113,7 +113,7 @@ class CategoryScreen extends StatelessWidget {
             ),
           )
         ],
-      )),
-    );
+      ),
+    ));
   }
 }

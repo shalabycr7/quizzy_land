@@ -33,7 +33,6 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   void navOnTimeOut() {
-
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
@@ -41,6 +40,10 @@ class _QuizScreenState extends State<QuizScreen> {
             index: context.read<QuestionsCubit>().index - 1, score: score),
       ),
     );
+  }
+
+  void goBack() {
+    Navigator.of(context).pop();
   }
 
   @override
@@ -82,7 +85,7 @@ class _QuizScreenState extends State<QuizScreen> {
                             context,
                             'Do you want to go back to the previous screen?');
                         if (shouldNavigateBack) {
-                          Navigator.of(context).pop();
+                          goBack();
                         }
                       },
                       child: const Icon(
